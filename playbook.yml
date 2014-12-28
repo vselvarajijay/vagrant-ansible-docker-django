@@ -1,0 +1,21 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: Upgrade VM package manager
+      apt: upgrade=dist
+    - name: Update package manager sources
+      shell: sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+    - name: Run apt-get update
+      apt: update_cache=yes
+
+- hosts: all
+  sudo: yes
+  roles:
+    - angstwad.docker_ubuntu
+  tasks:
+    - name: Build Docker
+      shell: docker build -t django_docker /vagrant/
+    - name: Run Docker
+      docker: image=django_docker ports=8000:8000
+
