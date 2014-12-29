@@ -4,6 +4,9 @@ Working with Vagrant, Ansible, and Docker
 This is a demo project using Vagrant, Ansbile and Docker. An Ansible playbook is used to build a Docker image, and then start a Docker container. The Docker container runs a Django app which is executed within the Vagrant VM.
 
 
+![Image of Vagrant Environment]
+(http://oi60.tinypic.com/2zqfpmt.jpg)
+
 Vagrant
 -------
 
