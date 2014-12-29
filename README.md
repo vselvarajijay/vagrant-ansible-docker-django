@@ -1,14 +1,15 @@
 Working with Vagrant, Ansible, and Docker
 =========================================
 
-This is a demo project using Vagrant, Ansbile and Docker. An Ansible playbook is used to build a Docker image, and then start a Docker container. The Docker container runs a Django app which is executed within the Vagrant VM.
-
+This is a demo project using Vagrant, Ansbile and Docker. An Ansible playbook is used to build a Docker image, and then start a Docker container. The Docker container runs a Django app which is executed within the Vagrant VM. After successful launch, the django App can be accessed from the host machine via http://localhost:8000.
 
 ![Image of Vagrant Environment]
 (http://oi60.tinypic.com/2zqfpmt.jpg)
 
 Vagrant
 -------
+
+Download ubuntu, forward port 8000, and run the Ansible playbook
 
 ```
 Vagrant.configure(2) do |config|
@@ -25,7 +26,7 @@ end
 
 Ansible
 -------
-
+Update packages installed on the Vagrant machine, configure ansible role for docker_ubuntu, build the docker image and run it with port 8000
 
 ```
 ---
@@ -53,6 +54,7 @@ Ansible
 
 Docker
 ------
+Straightforward dockerfile using ubuntu image, installs Django, exposes port 8000, and runs django app listening to all public requests on port 8000
 
 ```
 FROM ubuntu:14.04
